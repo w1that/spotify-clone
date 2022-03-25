@@ -1,14 +1,17 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Col, Row } from "antd";
+import { Button, Col, Row } from "antd";
 import LeftMenu from "../components/LeftMenu";
 import Navbar from "../components/Navbar";
+import menuItemStore, { MenuItemStore } from "../mobx/MenuItemStore";
 
 export default function Home() {
+
+  const store = new MenuItemStore()
   return (
     <div>
       <Row className="min-h-screen w-full">
         <Col className="bg-black" span={4}>
-          <LeftMenu />
+          <LeftMenu  />
         </Col>
         <Col className="bg-medium-dark-gray" span={20}>
           <Navbar/>

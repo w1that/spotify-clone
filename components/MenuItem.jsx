@@ -1,15 +1,17 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { AiOutlineHome, AiFillHome, AiFillHeart,  } from "react-icons/ai";
 import { RiSearchLine, RiSearchFill } from "react-icons/ri";
 import { BiLibrary } from "react-icons/bi";
 import { MdAddBox } from "react-icons/md";
 
-export default function MenuItem({ id, selectedItem, icon, text }) {
+export default function MenuItem({ id,  icon, text, selectedId }) {
+
+
   //return matched icon, change icon to its outlined version if it's selected menu item.
   const handleIcon = (name) => {
     switch (name) {
       case "AiOutlineHome":
-        return id === selectedItem ? <AiFillHome color="white" size={30} /> : <AiOutlineHome color="white" size={30} />
+        return id === selectedId ? <AiFillHome color="white" size={30} /> : <AiOutlineHome color="white" size={30} />
       case "AiFillHeart":
         return (
           <AiFillHeart
@@ -19,7 +21,7 @@ export default function MenuItem({ id, selectedItem, icon, text }) {
           />
         );
       case "RiSearchLine":
-        return id===selectedItem ? <RiSearchFill color="white" size={30}/>:<RiSearchLine color="white" size={30} />;
+        return id=== selectedId ? <RiSearchFill color="white" size={30}/>:<RiSearchLine color="white" size={30} />;
       case "BiLibrary":
         return <BiLibrary color="white" size={30} />;
       case "MdAddBox":
@@ -30,8 +32,9 @@ export default function MenuItem({ id, selectedItem, icon, text }) {
     }
   };
 
+  // checks if it's selected menu item, if so increase opacity of it to 100.
   const handleSelectedMenuItem = () => {
-    if (selectedItem === id) {
+    if (selectedId === id) {
       return (
         <div className="flex items-center opacity-100 py-1.5 px-2 transition-opacity duration-200 cursor-pointer w-full hover:opacity-100 ">
           {handleIcon(icon)}
