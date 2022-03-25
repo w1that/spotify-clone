@@ -8,8 +8,8 @@ module.exports = {
     extend: {
       colors:{
         'black': '#000000',
-        'dark-gray': '#101010',
-        'medium-gray' : '#b2b2b2'
+        'dark-gray': '#090909',
+        'medium-dark-gray' : '#121212',
       },
       fontFamily:{
         gotham : 'Gotham, cursive'
