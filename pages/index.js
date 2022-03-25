@@ -1,12 +1,19 @@
 /* eslint-disable react/no-unescaped-entities */
-import Head from 'next/head'
-import Image from 'next/image'
+import { Col, Row } from "antd";
+import LeftMenu from "../components/LeftMenu";
 
 export default function Home() {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
-
-  )
+    <div>
+      <Row className="min-h-screen w-screen ">
+        <Col className="bg-dark-gray h-screen" span={4}>
+          <LeftMenu />
+        </Col>
+        <Col className="bg-gray-700 h-screen" span={20}>
+          
+        </Col>
+      </Row>
+      
+    </div>
+  );
 }
