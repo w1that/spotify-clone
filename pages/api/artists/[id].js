@@ -1,5 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
-import Artist from "../../../models/Arist";
+import Artist from "../../../models/Artist";
 import dbConnect from "../../../utils/dbConnection";
 
 dbConnect();

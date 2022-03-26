@@ -5,11 +5,28 @@ import dbConnect from "../../../utils/dbConnection";
 dbConnect();
 
 export default async (req, res) => {
-  try {
-    const musics = await Music.find({});
+  const { method } = req;
 
-    res.status(200).json({ success: true, data: musics });
-  } catch (err) {
-    res.status(400).json({ success: false, message: "böyle bir veri yok" });
+  switch (method) {
+    case "GET":
+      try {
+        const musics = await Music.find({});
+
+        res.status(200).json({ success: true, data: musics });
+      } catch (err) {
+        res.status(400).json({ success: false, message: "böyle bir veri yok" });
+      }
+      break;
+    case "POST":
+      try {
+        const music = await Music.create(req.body);
+
+        res.status(200).json({ success: true, data: music });
+      } catch (err) {
+        res.status(400).json({ success: false });
+      }
+      break;
+    default:
+      break;
   }
 };

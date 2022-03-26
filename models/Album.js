@@ -4,11 +4,14 @@ const AlbumSchema = new mongoose.Schema({
     year:{
         type:Number
     },
+    name:{
+        type:String
+    },
     musics:{
         type:Array
     },
     artistId:{
-        tpye:String
+        type:String
     },
     coverImage:{
         type:String

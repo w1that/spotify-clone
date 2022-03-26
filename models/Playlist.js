@@ -4,7 +4,7 @@ const PlayListSchema = new mongoose.Schema({
     title:{
         type:String
     },
-    genreId:{
+    description:{
         type:String
     },
     likes:{

@@ -4,6 +4,9 @@ const MusicSchema = new mongoose.Schema({
     artists:{
         type:Array,
     },
+    name:{
+        type:String,
+    },  
     year:{
         type: Number
     },

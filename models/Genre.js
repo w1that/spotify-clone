@@ -7,9 +7,6 @@ const GenreSchema = new mongoose.Schema({
     playLists:{
         type:Array
     },
-    coverImage:{
-        type:String
-    }
 })
 
 module.exports = mongoose.models.Genre || mongoose.model('Genre', GenreSchema);

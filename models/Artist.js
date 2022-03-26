@@ -4,6 +4,9 @@ const ArtistSchema = new mongoose.Schema({
     popularMusics : {
         type:Array
     },
+    name:{
+        type:String
+    },
     albums:{
         type:Array
     },
