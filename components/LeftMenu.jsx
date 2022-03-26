@@ -8,7 +8,7 @@ function LeftMenu(){
 
 
     return (
-      <div className="p-3 px-4 my-3 h-screen fixed bg-black">
+      <div className="p-3 px-4 my-3 h-screen w-full fixed bg-black">
              
 
         <Logo />

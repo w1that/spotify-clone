@@ -28,7 +28,7 @@ export default function AppLayout({}) {
   return (
     <div>
       <Row className="min-h-screen w-full">
-        <Col className="bg-black" span={4}>
+        <Col className="bg-black fixed" span={4}>
           <LeftMenu />
         </Col>
         
