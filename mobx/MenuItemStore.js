@@ -13,7 +13,6 @@ export class MenuItemStore {
 
   setSelectedMenuItemId(id) {
     this.selectedMenuItemId = id;
-    console.log(this.selectedMenuItemId)
   }
 
   getSelectedMenuItemId(){
