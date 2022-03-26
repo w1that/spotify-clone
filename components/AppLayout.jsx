@@ -12,7 +12,7 @@ export default function AppLayout() {
         </Col>
         
         <Col className="bg-medium-dark-gray relative" span={20}>
-          <Navbar />
+          <Navbar/>
         </Col>
       </Row>
     </div>

@@ -10,6 +10,7 @@ module.exports = {
         'black': '#000000',
         'dark-gray': '#090909',
         'medium-dark-gray' : '#121212',
+        'spotify-green' : '#1ed760'
       },
       fontFamily:{
         gotham : 'Gotham, cursive'

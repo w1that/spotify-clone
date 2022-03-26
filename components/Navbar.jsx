@@ -1,10 +1,15 @@
-import React from "react";
+import React, {useState} from "react";
 import { useRouter } from "next/dist/client/router";
 import SearchBar from "./SearchBar";
+import Link from "next/link";
+import { observer } from "mobx-react";
+import userStore from "../mobx/UserStore";
 
-export default function Navbar() {
+function Navbar() {
 
   const pathName = useRouter().pathname
+  const [currentUser, setCurrentUser] = useState(userStore.currentUserId);
+  
 
   // controls if the searchbar should be shown or not.
   const handleNavbarElements = () => {
@@ -20,14 +25,19 @@ export default function Navbar() {
       
       {handleNavbarElements()}
 
-      <div className=" absolute right-80 w-60 flex justify-between mr-10">
+      {currentUser?<></>:<div className=" absolute right-80 w-60 flex justify-between mr-10">
         <button className="hover:scale-x-105 focus:scale-95">
           <h1 className="text-white font-gotham m-0 text-xs ">KAYDOL</h1>
         </button>
+        <Link href={"/login"} passHref>
         <button className="bg-slate-50 rounded-full px-5 hover:scale-x-105">
           <h1 className="text-black font-gotham m-0 p-3 text-xs">OTURUM AÇ</h1>
         </button>
-      </div>
+        </Link>
+      </div>}
     </div>
   );
 }
+
+
+export default observer(Navbar);

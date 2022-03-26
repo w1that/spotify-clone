@@ -1,7 +1,7 @@
 import { action, makeObservable, observable } from "mobx";
 
 export class UserStore {
-  currentUserId = -1; //default user is not logged in.
+  currentUserId = null; //default user is not logged in.
 
   constructor() {
     makeObservable(this, {
@@ -11,12 +11,12 @@ export class UserStore {
     });
   }
 
-  setCurrentUserId(id) {
-    this.currentUserId = id;
+  setCurrentUserId(user) {
+    this.currentUserId = user;
   }
 
   logOut() {
-    this.currentUserId = -1;
+    this.currentUserId = {};
   }
 }
 
