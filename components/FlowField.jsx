@@ -4,11 +4,10 @@ import LinearGenresList from "./LinearGenresList";
 
 export default function FlowField() {
   const router = useRouter();
-  console.log(router.pathname)
-  
+  console.log(process.env.API_BASE);
 
   return (
-    <div className="w-full h-full bg-green-800 flex justify-center text-white mt-20">
+    <div className="w-full px-10 flex justify-center mt-20">
       <LinearGenresList/>
     </div>
   );

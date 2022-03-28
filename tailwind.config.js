@@ -9,15 +9,16 @@ module.exports = {
       colors:{
         'black': '#000000',
         'dark-gray': '#090909',
-        'medium-dark-gray' : '#121212',
-        'spotify-green' : '#1ed760'
+        'medium-dark-gray' : '#1e1e1e',
+        'medium-gray':'#171717',
+        'spotify-green' : '#1ed760',
+        'weak-gray':'#797979',
+        'hover-gray':'#333333'
       },
       fontFamily:{
         gotham : 'Gotham, cursive'
       }
     },
-    
-    
   },
   plugins: [],
 }

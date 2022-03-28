@@ -34,7 +34,7 @@ function Navbar() {
       {userStore.currentUserId ? (
         <></>
       ) : (
-        <div className=" absolute right-80 w-60 flex justify-between mr-10">
+        <div className=" absolute right-80 w-60 flex z-20 justify-between mr-10">
           <button className="hover:scale-x-105 focus:scale-95">
             <h1 className="text-white font-gotham m-0 text-xs ">KAYDOL</h1>
           </button>
