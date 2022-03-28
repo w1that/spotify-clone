@@ -6,8 +6,9 @@ import LeftMenu from "./LeftMenu";
 import Navbar from "./Navbar";
 import userStore from "../mobx/UserStore";
 import FlowField from './FlowField';
+import { useRouter } from 'next/router';
 
-export default function AppLayout({}) {
+export default function AppLayout({page}) {
 
   const [className, setClassName] = useState('')
   const [style, setStyle] = useState('')
@@ -24,6 +25,20 @@ export default function AppLayout({}) {
     }
   }, [])
 
+ 
+  // TODO: burayı kontrol etsene. flowfield içerisinde değişiklikler yapılabilir.genres sayfasında da sonuçta flow oluyor.
+  function handleRightSide(){
+    switch (page) {
+      case 'main':
+        return <FlowField />
+      case 'genre':
+        return <h1>genreeee</h1>  
+    
+      default:
+        break;
+    }
+  } 
+  
 
   return (
     <div>
@@ -34,7 +49,7 @@ export default function AppLayout({}) {
         
         <Col style={style} className={className} span={20}>
       <Navbar/>
-      <FlowField />
+      {handleRightSide()}
     </Col>
         
       </Row>
