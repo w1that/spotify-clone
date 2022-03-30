@@ -1,12 +1,14 @@
+import { observer } from "mobx-react-lite";
 import Link from "next/link";
 import React from "react";
 import PlayListCard from "./PlayListCard";
+import genreStore from "../mobx/GenreStore";
 
-export default function LinearGenreItem({ genre }) {
+function LinearGenreItem({ genre }) {
   return (
-    <div className="w-full flex flex-col items-start">
+    <div className="w-full flex flex-col items-start mb-10">
       <Link href={`/genre/${genre._id}`} passHref>
-        <h1 className="text-white text-2xl font-gotham cursor-pointer inline-block hover:underline ">
+        <h1 onClick={()=>genreStore.setGenre(genre)} className="text-white text-2xl font-gotham cursor-pointer inline-block hover:underline ">
           {genre.title}
         </h1>
       </Link>
@@ -18,3 +20,5 @@ export default function LinearGenreItem({ genre }) {
     </div>
   );
 }
+
+export default  observer(LinearGenreItem);

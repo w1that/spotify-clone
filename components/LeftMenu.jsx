@@ -1,4 +1,3 @@
-import { Button } from "antd";
 import React from "react";
 import Logo from "./Logo";
 import  MenuItems  from "./MenuItems";
@@ -8,7 +7,7 @@ function LeftMenu(){
 
 
     return (
-      <div className="p-3 px-4 my-3 h-screen w-full fixed bg-black">
+      <div className="p-3 px-4 py-7 h-screen w-full fixed bg-black">
              
 
         <Logo />

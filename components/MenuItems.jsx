@@ -1,13 +1,16 @@
 import { observer } from "mobx-react-lite";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import MenuItem from "./MenuItem";
 import userStore from "../mobx/UserStore";
 import { notification } from "antd";
+import {useRouter} from 'next/router'
 
 function MenuItems({ store }) {
   const user = userStore.currentUserId;
-  const clickable = !user;
+  const [blockRoute, setBlockRoute] = useState(true);
+  const router = useRouter();
+  const {page} = router.query 
 
   const openNotification = (placement, message, description) => {
     notification.info({
@@ -84,7 +87,10 @@ function MenuItems({ store }) {
       <div className="mt-5 flex flex-col">
         {/* creates new playlist. */}
         <Link href={"/playlist/xxx"} passHref>
-          <button onClick={() => handleAllowedClick(3)}>
+          <button onClick={() => {
+            handleAllowedClick(3)
+            router
+          }}>
             <MenuItem
               id={3}
               selectedId={store.selectedMenuItemId}
@@ -97,14 +103,13 @@ function MenuItems({ store }) {
         <Link href={"/collection/tracks"} passHref>
           <button onClick={() => handleAllowedClick(4)}>
             {/* for aligning purpose I wrapped the last one into this div. */}
-            <div className="pl-0.5">
+           
               <MenuItem
                 id={4}
                 selectedId={store.selectedMenuItemId}
                 icon="AiFillHeart"
                 text="Begenilen Sarkılar"
               />
-            </div>
           </button>
         </Link>
       </div>

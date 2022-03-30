@@ -6,7 +6,7 @@ const nextConfig = {
 
   },
   images:{
-    domains:['i.scdn.co']
+    domains:['i.scdn.co', 'dissectpodcast.com','seed-mix-image.spotifycdn.com','charts-images.scdn.co']
   }
 }
 
