@@ -4,11 +4,12 @@ class PlaylistService{
 
     getPlaylistById(id, setPlaylist, setLoading){
         axios
-      .get(`http://localhost:3000/api/playlists/${id}`)
+      .get(`https://spotify-clone-nu-ten.vercel.app/api/playlists/${id}`)
       .then((res) => {
         setPlaylist(res.data.data);
         setLoading(false);
-      });
+      })
+      .catch((err) => console.log(err));
     }
 
     
