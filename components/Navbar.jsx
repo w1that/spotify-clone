@@ -12,12 +12,12 @@ function Navbar() {
   const [className, setClassName] = useState("");
 
   useEffect(() => {
-    if(pathName.includes('/playlist')){
+    if (pathName.includes("/playlist")) {
       setClassName(
         "w-full h-16 justify-between fixed bg-light-gray flex items-center mr-10 z-20"
       );
-      return
-    }else{
+      return;
+    } else {
       if (userStore.currentUserId) {
         setClassName(
           "w-full h-16 justify-between fixed bg-transparent flex items-center mr-10 z-20"
@@ -28,10 +28,9 @@ function Navbar() {
         );
       }
     }
-    
   }, []);
 
-  // controls if the searchbar should be shown or not.
+  // controls if the searchbar should be visible.
   const handleNavbarElements = () => {
     if (pathName === "/search") {
       return <SearchBar />;

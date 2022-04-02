@@ -6,10 +6,10 @@ export class GenreStore {
 
   constructor() {
     makeObservable(this, {
-      genres:observable,
+      genres: observable,
       selectedGenre: observable,
       setGenre: action,
-      setGenres: action
+      setGenres: action,
     });
   }
 
@@ -17,10 +17,9 @@ export class GenreStore {
     this.selectedGenre = genre;
   }
 
-  setGenres(genres){
+  setGenres(genres) {
     this.genres = genres;
   }
-
 }
 
 const genreStore = new GenreStore();

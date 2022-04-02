@@ -1,16 +1,15 @@
 import { observer } from "mobx-react-lite";
 import Link from "next/link";
-import React, { useState } from "react";
+import React from "react";
 import MenuItem from "./MenuItem";
 import userStore from "../mobx/UserStore";
 import { notification } from "antd";
-import {useRouter} from 'next/router'
+import { useRouter } from "next/router";
+import menuItemStore from "../mobx/MenuItemStore";
 
-function MenuItems({ store }) {
+function MenuItems() {
   const user = userStore.currentUserId;
-  const [blockRoute, setBlockRoute] = useState(true);
   const router = useRouter();
-  const {page} = router.query 
 
   const openNotification = (placement, message, description) => {
     notification.info({
@@ -20,7 +19,7 @@ function MenuItems({ store }) {
     });
   };
 
-  function handleAllowedClick(id) {
+  function handleAllowedClick(id, urlEndpoint) {
     let message = "";
     let description = "";
     switch (id) {
@@ -45,17 +44,25 @@ function MenuItems({ store }) {
     if (!user) {
       openNotification("topLeft", message, description);
     } else {
-      store.setSelectedMenuItemId(id);
+      menuItemStore.setSelectedMenuItemId(id);
+
+      if (id === 3) {
+        // create new playlist id, add it to the user, then route there.
+        const newId = "xxx";
+        router.push(`${urlEndpoint}xxx`);
+      } else {
+        router.push(urlEndpoint);
+      }
     }
   }
-
+  // next link is used on some of them. especially the ones which has not a route changing not depends on whether user is logged in.
   return (
     <div className="mt-5 flex flex-col">
       <Link href={"/"} passHref>
-        <button onClick={() => store.setSelectedMenuItemId(0)}>
+        <button onClick={() => menuItemStore.setSelectedMenuItemId(0)}>
           <MenuItem
             id={0}
-            selectedId={store.selectedMenuItemId}
+            selectedId={menuItemStore.selectedMenuItemId}
             icon="AiOutlineHome"
             text="Ana sayfa"
           />
@@ -63,55 +70,50 @@ function MenuItems({ store }) {
       </Link>
 
       <Link href={"/search"} passHref>
-        <button onClick={() => store.setSelectedMenuItemId(1)}>
+        <button onClick={() => menuItemStore.setSelectedMenuItemId(1)}>
           <MenuItem
             id={1}
-            selectedId={store.selectedMenuItemId}
+            selectedId={menuItemStore.selectedMenuItemId}
             icon="RiSearchLine"
             text="Ara"
           />
         </button>
       </Link>
 
-      <Link href={"/collection/playlists"} passHref>
-        <button onClick={() => handleAllowedClick(2)}>
-          <MenuItem
-            id={2}
-            selectedId={store.selectedMenuItemId}
-            icon="BiLibrary"
-            text="Kitaplıgın"
-          />
-        </button>
-      </Link>
+      <button onClick={() => handleAllowedClick(2, "/collection/playlists")}>
+        <MenuItem
+          id={2}
+          selectedId={menuItemStore.selectedMenuItemId}
+          icon="BiLibrary"
+          text="Kitaplıgın"
+        />
+      </button>
 
       <div className="mt-5 flex flex-col">
         {/* creates new playlist. */}
-        <Link href={"/playlist/xxx"} passHref>
-          <button onClick={() => {
-            handleAllowedClick(3)
-            router
-          }}>
-            <MenuItem
-              id={3}
-              selectedId={store.selectedMenuItemId}
-              icon="MdAddBox"
-              text="Calma Listesi Olustur"
-            />
-          </button>
-        </Link>
+        <button
+          onClick={() => {
+            handleAllowedClick(3, "/playlist/");
+          }}
+        >
+          <MenuItem
+            id={3}
+            selectedId={menuItemStore.selectedMenuItemId}
+            icon="MdAddBox"
+            text="Calma Listesi Olustur"
+          />
+        </button>
 
-        <Link href={"/collection/tracks"} passHref>
-          <button onClick={() => handleAllowedClick(4)}>
-            {/* for aligning purpose I wrapped the last one into this div. */}
-           
-              <MenuItem
-                id={4}
-                selectedId={store.selectedMenuItemId}
-                icon="AiFillHeart"
-                text="Begenilen Sarkılar"
-              />
-          </button>
-        </Link>
+        <button onClick={() => handleAllowedClick(4, "/collection/tracks")}>
+          {/* for aligning purpose I wrapped the last one into this div. */}
+
+          <MenuItem
+            id={4}
+            selectedId={menuItemStore.selectedMenuItemId}
+            icon="AiFillHeart"
+            text="Begenilen Sarkılar"
+          />
+        </button>
       </div>
     </div>
   );

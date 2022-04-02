@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { RiSearchLine } from "react-icons/ri";
 
 export default function SearchBar() {
@@ -10,5 +10,5 @@ export default function SearchBar() {
       ></input>
       <RiSearchLine size={30} className="absolute top-1 ml-2" />
     </div>
-  )
+  );
 }

@@ -6,13 +6,14 @@ import genreStore from "../mobx/GenreStore";
 import { useRouter } from "next/router";
 
 function LinearGenresList() {
-  // anasayfada görünecek olanlar burada sıralanacak
+  // shows the content which will be listed on main page '/'
 
   const router = useRouter();
   const { id } = router.query;
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    //get all genres.
     genreService.getGenres().then((res) => {
       genreStore.setGenres(res.data.data);
       setLoading(false);
@@ -20,6 +21,7 @@ function LinearGenresList() {
   }, []);
 
   function handleShowedContent() {
+    //if id and a selected genre exist, it means we will show a selected genre content on /genre/xxx which looks same the ones which are on main page on 
     if (id && genreStore.selectedGenre) {
       return (
         <LinearGenreItem
@@ -27,7 +29,7 @@ function LinearGenresList() {
           key={genreStore.selectedGenre._id}
         />
       );
-    } else {
+    } else {   //we are '/', and we want to show the list of genres.
       return genreStore.genres.map((genre) => {
         return <LinearGenreItem genre={genre} key={genre._id} />;
       });

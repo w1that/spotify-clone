@@ -1,35 +1,16 @@
-import { Checkbox, Input, notification, Typography } from "antd";
-import axios from "axios";
+import { Checkbox, Input,  Typography } from "antd";
 import { observer } from "mobx-react";
-import Router from "next/router";
+import router from "next/router";
 import React, { useState } from "react";
-import userStore from '../mobx/UserStore'
+import userStore from "../mobx/UserStore";
+import userService from "../services/UserService";
 
 function LoginForm() {
-
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  // TODO: burayı toparla  >:(
   const handleAuthenticate = () => {
-    axios
-      .get("http://localhost:3000/api/users")
-      .then((res) => {
-        const exist = res.data.data.find(
-          (user) => user.username === username && user.password === password
-        );
-        if (exist) {
-          Router.push("/");
-          userStore.setCurrentUserId(exist);
-        } else {
-          notification.open({
-            message: "Kullanıcı adı veya parola hatalı",
-            description:
-              "Girdiğin bilgileri kontrol ettikten sonra tekrar dene.",
-          });
-        }
-      })
-      .catch((err) => console.log(err));
+    userService.logUserIn(username, password, userStore, router);
   };
 
   return (

@@ -5,10 +5,17 @@ import PlayListCard from "./PlayListCard";
 import genreStore from "../mobx/GenreStore";
 
 function LinearGenreItem({ genre }) {
+  const handleClickOnGenre = (genre) => {
+    genreStore.setGenre(genre);
+  };
+
   return (
     <div className="w-full flex flex-col items-start mb-10">
       <Link href={`/genre/${genre._id}`} passHref>
-        <h1 onClick={()=>genreStore.setGenre(genre)} className="text-white text-2xl font-gotham cursor-pointer inline-block hover:underline ">
+        <h1
+          onClick={() => handleClickOnGenre(genre)}
+          className="text-white text-2xl font-gotham cursor-pointer inline-block hover:underline "
+        >
           {genre.title}
         </h1>
       </Link>
@@ -21,4 +28,4 @@ function LinearGenreItem({ genre }) {
   );
 }
 
-export default  observer(LinearGenreItem);
+export default observer(LinearGenreItem);

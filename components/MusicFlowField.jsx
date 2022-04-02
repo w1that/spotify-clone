@@ -6,15 +6,16 @@ import { AiOutlineClockCircle } from "react-icons/ai";
 import { Col, List, Row } from "antd";
 import axios from "axios";
 import MusicListItem from "./MusicListItem";
+import musicService from "../services/MusicService";
 
 export default function MusicFlowField({ playlist }) {
   const [musics, setMusics] = useState([]);
   const [loading, setLoading] = useState(true);
+  
   useEffect(() => {
     playlist.musics.map((musicId) => {
-      axios
-        .get(`http://localhost:3000/api/musics/${musicId}`)
-        .then((res) => setMusics((prev) => [...prev, res.data.data]));
+      musicService.getMusicById(musicId, setMusics);
+
       if (playlist.musics.indexOf(musicId) === playlist.musics.length - 1) {
         setLoading(false);
       }
@@ -79,7 +80,7 @@ export default function MusicFlowField({ playlist }) {
           }
           dataSource={musics}
           renderItem={(item) => (
-              <MusicListItem music={item} id={musics.indexOf(item)} />
+            <MusicListItem music={item} id={musics.indexOf(item)} />
           )}
         />
       </div>

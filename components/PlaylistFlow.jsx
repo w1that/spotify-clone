@@ -3,6 +3,7 @@ import { useRouter } from "next/dist/client/router";
 import axios from "axios";
 import PlaylistHeader from "./PlaylistHeader";
 import MusicFlowField from "./MusicFlowField";
+import playlistService from "../services/PlaylistService";
 
 export default function PlaylistFlow() {
   const router = useRouter();
@@ -10,12 +11,7 @@ export default function PlaylistFlow() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:3000/api/playlists/${router.query.id}`)
-      .then((res) => {
-        setPlaylist(res.data.data);
-        setLoading(false);
-      });
+    playlistService.getPlaylistById(router.query.id, setPlaylist, setLoading);
   }, []);
 
   if (loading) {

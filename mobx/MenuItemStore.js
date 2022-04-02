@@ -1,13 +1,13 @@
-import { action, makeAutoObservable, makeObservable, observable } from "mobx";
+import { action,  makeObservable, observable } from "mobx";
 
 export class MenuItemStore {
   selectedMenuItemId = 0; //default ana sayfa
 
   constructor() {
-    makeObservable(this,{
-      selectedMenuItemId:observable,
-      setSelectedMenuItemId:action,
-      getSelectedMenuItemId:action
+    makeObservable(this, {
+      selectedMenuItemId: observable,
+      setSelectedMenuItemId: action,
+      getSelectedMenuItemId: action,
     });
   }
 
@@ -15,8 +15,8 @@ export class MenuItemStore {
     this.selectedMenuItemId = id;
   }
 
-  getSelectedMenuItemId(){
-    return this.selectedMenuItemId
+  getSelectedMenuItemId() {
+    return this.selectedMenuItemId;
   }
 }
 

@@ -1,17 +1,19 @@
-import React, {useEffect} from "react";
-import { AiOutlineHome, AiFillHome, AiFillHeart,  } from "react-icons/ai";
+import React from "react";
+import { AiOutlineHome, AiFillHome, AiFillHeart } from "react-icons/ai";
 import { RiSearchLine, RiSearchFill } from "react-icons/ri";
 import { BiLibrary } from "react-icons/bi";
 import { MdAddBox } from "react-icons/md";
 
-export default function MenuItem({ id,  icon, text, selectedId }) {
-
-
+export default function MenuItem({ id, icon, text, selectedId }) {
   //return matched icon, change icon to its outlined version if it's selected menu item.
   const handleIcon = (name) => {
     switch (name) {
       case "AiOutlineHome":
-        return id === selectedId ? <AiFillHome color="white" size={30} /> : <AiOutlineHome color="white" size={30} />
+        return id === selectedId ? (
+          <AiFillHome color="white" size={30} />
+        ) : (
+          <AiOutlineHome color="white" size={30} />
+        );
       case "AiFillHeart":
         return (
           <AiFillHeart
@@ -21,7 +23,11 @@ export default function MenuItem({ id,  icon, text, selectedId }) {
           />
         );
       case "RiSearchLine":
-        return id=== selectedId ? <RiSearchFill color="white" size={30}/>:<RiSearchLine color="white" size={30} />;
+        return id === selectedId ? (
+          <RiSearchFill color="white" size={30} />
+        ) : (
+          <RiSearchLine color="white" size={30} />
+        );
       case "BiLibrary":
         return <BiLibrary color="white" size={30} />;
       case "MdAddBox":
