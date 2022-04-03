@@ -3,7 +3,7 @@ import axios from "axios";
 class UserService {
   logUserIn(username, password, userStore, router) {
     axios
-      .get(`https://spotify-clone-nu-ten.vercel.app/api/users`)
+      .get(`http://localhost:3000/api/users`)
       .then((res) => {
         const exist = res.data.data.find(
           (user) => user.username === username && user.password === password

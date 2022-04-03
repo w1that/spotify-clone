@@ -5,6 +5,7 @@ import dbConnect from "../../../utils/dbConnection";
 dbConnect();
 
 export default async (req, res) => {
+  
   const id = req.query.id;
 
   try {

@@ -2,7 +2,7 @@ import axios from "axios";
 
 class AlbumService{
     getAlbumById(albumId, setAlbum, setLoading){
-        axios.get(`https://spotify-clone-nu-ten.vercel.app/api/albums/${albumId}`)
+        axios.get(`http://localhost:3000/api/albums/${albumId}`)
     .then(res=>{
         setAlbum(res.data.data);
         setLoading(false);

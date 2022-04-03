@@ -2,13 +2,13 @@ import axios from "axios";
 
 class GenreService {
   async getGenres() {
-    const response = await axios.get(`https://spotify-clone-nu-ten.vercel.app/api/genres`);
+    const response = await axios.get(`http://localhost:3000/api/genres`);
     return response;
   }
 
   getGenreById(id, setLoading) {
     axios
-      .get(`https://spotify-clone-nu-ten.vercel.app/api/genres/${id}`)
+      .get(`http://localhost:3000/api/genres/${id}`)
       .then(() => {
         setLoading(false);
       })
